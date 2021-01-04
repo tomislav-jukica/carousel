@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #272727;
+  color: white;
+  text-align: center; }
+  @media only screen and (min-width: 600px) {
+    body .wrapper {
+      width: 80%;
+      margin: auto; } }
+  body .wrapper .break {
+    height: 1000px; }
+  body .wrapper .container {
+    display: flex;
+    text-align: center;
+    margin-top: 20px; }
+    @media only screen and (min-width: 600px) {
+      body .wrapper .container {
+        margin: auto; } }
+    body .wrapper .container .main {
+      -ms-flex: 1;
+      flex: 1; }
+      body .wrapper .container .main img {
+        max-width: 100%;
+        height: auto; }
+  body .wrapper .navigation {
+    width: 100%;
+    display: table; }
+    body .wrapper .navigation .nav-slike {
+      vertical-align: middle;
+      display: table-cell;
+      padding: 5px; }
+      body .wrapper .navigation .nav-slike img {
+        max-width: 100%;
+        height: auto; }
+    body .wrapper .navigation .active img {
+      border: 2px solid gold; }
+  body .wrapper .settings {
+    padding: 10px;
+    margin: auto;
+    display: flex; }
+    body .wrapper .settings .autoplay {
+      -ms-flex: 1;
+      flex: 1; }
+    body .wrapper .settings .brojSekundi {
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center; }
+      body .wrapper .settings .brojSekundi input {
+        margin: 15px;
+        width: 20px; }
+    body .wrapper .settings .navigacija-toggle {
+      -ms-flex: 1;
+      flex: 1;
+      text-align: right; }
+      body .wrapper .settings .navigacija-toggle label {
+        float: right; }
+    body .wrapper .settings .fade-in {
+      -ms-flex: 1;
+      flex: 1;
+      top: 50%;
+      text-align: center; }
+    body .wrapper .settings .prikazi {
+      -ms-flex: 1;
+      flex: 1;
+      text-align: center; }
+      body .wrapper .settings .prikazi button {
+        background-color: #14A76C;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        margin: 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        float: right; }
+  body .effect {
+    animation: fadeIn ease 20s;
+    -webkit-animation: fadeIn ease 20s;
+    -moz-animation: fadeIn ease 20s;
+    -o-animation: fadeIn ease 20s;
+    -ms-animation: fadeIn ease 20s; }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-ms-keyframes fadeIn {
+  body 0% {
+    opacity: 0; }
+  body 100% {
+    opacity: 1; } }
+  body .arrow {
+    -ms-flex: 1;
+    flex: 1;
+    font-size: xx-large; }
+    body .arrow p {
+      margin: 0;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer; }
+  body .ui-checkbox input[type=checkbox] {
+    transform: scale(1.5);
+    margin: 20px; }

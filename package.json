@@ -1,0 +1,19 @@
+{
+  "name": "js-starter-code",
+  "version": "1.0.0",
+  "description": "JS Starter Code",
+  "main": "script.js",
+  "scripts": {
+    "start": "lite-server",
+    "scss": "node-sass --watch scss -o css"
+  },
+  "author": "tjukica",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.5.4"
+  },
+  "dependencies": {
+    "node-sass": "^5.0.0",
+    "sass": "^1.32.0"
+  }
+}

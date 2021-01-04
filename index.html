@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS Starter</title>
+  
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body> 
+  <div class="wrapper">
+  <div class="settings">
+    <div class="autoplay">
+      <span>Autoplay</span>
+      <input class="tgl tgl-skewed" id="cb3" type="checkbox"/>
+      <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="cb3"></label>
+    </div>
+
+    <div class="brojSekundi">
+      <span>Broj sekundi</span><br>
+      <input type="number" id="brojSekundi" value="1" min="1" max="10"/>
+    </div>
+
+    <div class="navigacija-toggle">
+      <span>Navigacija</span>
+      <input class="tgl tgl-skewed" id="nav-toggle" type="checkbox"/>
+      <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="nav-toggle"></label>      
+    </div>
+  </div>
+  <div class="settings">
+    <div class="fade-in">
+      <span>Fade in</span>
+      <input class="tgl tgl-skewed" id="fade-in" type="checkbox"/>
+      <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="fade-in"></label>
+    </div>
+  </div>
+
+  <div class="break1">
+
+  </div>
+
+  <div class="container">
+    
+    <div class="arrow previous">
+      <p>&#8592;</p>
+    </div>
+
+    <div class="main">
+    
+    </div>
+
+    <div class="arrow next">
+      <p>&#8594;</p>
+    </div>
+
+  </div> 
+  <div class="navigation">
+
+  </div>      
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
