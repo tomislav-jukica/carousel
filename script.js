@@ -46,7 +46,7 @@ function previous() {
         trenutnaSlika--;
         prikaziSliku(trenutnaSlika);
     }
-    
+    prikaziNavigaciju(trenutnaSlika);   
 }
 
 function next() {
