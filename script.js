@@ -5,14 +5,13 @@ let slike = [];
 let trenutnaSlika = 1;
 let divSlike = [];
 
-let brojSlikaUNavigaciji = 4;
+let brojSlikaUNavigaciji = Number(prompt("Unestite broj slika u navigaciji: "));
 
 //START
 generirajSlike();
 generirajNavigaciju();
 prikaziNavigaciju(1);
 $('.navigation').hide();
-
 
 function generirajSlike() {
     for(let i=0; i<brojSlika; i++){ //Zapisuje slike u array
