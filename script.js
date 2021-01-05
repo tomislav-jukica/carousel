@@ -45,7 +45,7 @@ function previous() {
         trenutnaSlika--;
         prikaziSliku(trenutnaSlika);
     }
-    prikaziNavigaciju(trenutnaSlika);   
+    //prikaziNavigaciju(trenutnaSlika);   
 }
 
 function next() {
@@ -58,25 +58,36 @@ function next() {
         trenutnaSlika++;
         prikaziSliku(trenutnaSlika);
     }    
-    prikaziNavigaciju(trenutnaSlika);    
+   // prikaziNavigaciju(trenutnaSlika);    
 }
 
 $('.previous p').click(function() {
+    if(dohvatiPrvuSliku()[0].innerHTML === divSlike[trenutnaSlika - 1][0].innerHTML) {
+        postaviAktivnu(trenutnaSlika, true);
+    }
     previous();
-    provjeriPozicijuNavigacije();
+    postaviAktivnu(trenutnaSlika, true);
+
+    //provjeriPozicijuNavigacije();
+    
 });
 
 $('.next p').click(function() {
+    if(dohvatiZadnjuSliku()[0].innerHTML === divSlike[trenutnaSlika - 1][0].innerHTML) {
+        postaviAktivnu(trenutnaSlika);
+    }
     next();
-    provjeriPozicijuNavigacije();
+    postaviAktivnu(trenutnaSlika);
+    //provjeriPozicijuNavigacije();
 });
 
 $('.main').on('swiperight', function() {
     previous();
-    console.log("Swipe right")
+    postaviAktivnu(trenutnaSlika, true);
 })
 $('.main').on('swipeleft', function() {
     next();
+    postaviAktivnu(trenutnaSlika);
 }) 
 
 $('#cb3').change(function() {
@@ -84,26 +95,35 @@ $('#cb3').change(function() {
     if($('#cb3')[0].checked) {     
         let interval = setInterval(function() {        
             if(!$('#cb3')[0].checked) clearInterval(interval)
-            next();            
+            if(dohvatiZadnjuSliku()[0].innerHTML === divSlike[trenutnaSlika - 1][0].innerHTML) {
+                postaviAktivnu(trenutnaSlika);
+            }
+            next();
+            postaviAktivnu(trenutnaSlika);           
         }, vrijeme * 1000)
     }     
 });
 
 $('.navigation').on('click', '.nav-slike', function() {    
-    let index = $(this).index() + trenutnaSlika;
-    let temp  = $(this).index();
-    for (let i = 0; i < $(this).index(); i++) {      
-        next();
-        
-    }
-    console.log(index);
-    if(temp === 0 || temp === 1) {
-        prikaziNavigaciju(index);
+    let index = $(this).index();
+    let trenutnoAktivna = $('.active').index();
+    ukloniAktivnu(trenutnaSlika - 1);
+
+    let put = index - trenutnoAktivna;
+    if(put > 0) {
+        for (let i = 0; i < put; i++) {      
+            next();        
+        }  
+        postaviAktivnu(trenutnaSlika);
     } else {
-        next();
-        prikaziNavigaciju(index);
-        
-    }     
+        for (let i = 0; i < Math.abs(put); i++) {      
+            previous();        
+        }
+        postaviAktivnu(trenutnaSlika, true);
+    }
+      
+    
+    
 });
 
 $('#nav-toggle').change(function() {
@@ -115,7 +135,7 @@ $('#nav-toggle').change(function() {
 })
 
 $('#brojSlikaPoSlideu').change(function() {
-    provjeriPozicijuNavigacije();
+    //provjeriPozicijuNavigacije();
     brojSlikaUNavigaciji = $(this).value;
 })
 
@@ -151,19 +171,84 @@ function prikaziNavigaciju(slikaOd) {
         let container = divSlike[slika];
         container.removeClass("active");
         if(i === slikaOd) {
-            container.addClass("active");
+           // container.addClass("active");
         }
+        let x = divSlike[trenutnaSlika - 1];
+        x.addClass("active");
         $(".navigation").append(container);
         slika++;
-    }
-    
-    
+    }     
+}
+
+function postaviAktivnu (trenutnaSlika, back = false) {
+    let novaSlika = divSlike[trenutnaSlika-1];
+    slika = divSlike.findIndex(x => x[0].innerHTML === novaSlika[0].innerHTML);
+    if(back) {
+        if(trenutnaSlika === brojSlika) {
+            let container = divSlike[0];
+            container.removeClass("active");  
+        } else {
+            let container = divSlike[slika + 1];
+            container.removeClass("active");
+        } 
+        
+        container = divSlike[slika];
+        container.addClass("active");
+
+        let prvaSlikaUNav = dohvatiPrvuSliku(); //stari prvi
+        if(prvaSlikaUNav[0].innerHTML === divSlike[0][0].innerHTML) {
+            prvaSlikaUNav = divSlike[divSlike.length - 1];
+        }
+        let x = divSlike[trenutnaSlika-1][0].innerHTML; //novi
+
+        if(prvaSlikaUNav[0].innerHTML === x) {
+            if(slika < brojSlikaUNavigaciji - 1){
+                prikaziNavigaciju(divSlike.length - brojSlikaUNavigaciji + slika + 2)
+                //$(".navigation").append(container);
+            } else {
+                let x = slika - brojSlikaUNavigaciji + 1;
+                prikaziNavigaciju(x + 1);                
+            }            
+        }        
+    } else {       
+        if(trenutnaSlika === 1) {
+            let container = divSlike[divSlike.length - 1];
+            container.removeClass("active");
+        } else {
+            let container = divSlike[slika - 1];
+            container.removeClass("active");
+        } 
+
+        container = divSlike[slika];
+        container.addClass("active");
+
+        let zadnjaSlikaUNav = dohvatiZadnjuSliku()[0]
+        let x = divSlike[trenutnaSlika-1][0].innerHTML;
+        if(zadnjaSlikaUNav.innerHTML === container[0].innerHTML) {
+            if(slika + 1 > divSlike.length){
+                prikaziNavigaciju(1)
+            } else {
+                prikaziNavigaciju(slika + 1);
+            }            
+        }
+        
+    }    
+}
+
+function ukloniAktivnu(index) {
+    divSlike[index].removeClass("active");
 }
 
 function dohvatiZadnjuSliku() {
     let slika = $('.navigation .nav-slike:last-child');
     return slika;
 }
+
+function dohvatiPrvuSliku() {
+    let slika = $('.navigation .nav-slike:first-child');
+    return slika;
+}
+
 
 function sakrijNavigaciju() {
     for(let i = 0; i<brojSlikaUNavigaciji; i++) {

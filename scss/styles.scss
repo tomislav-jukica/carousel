@@ -40,10 +40,12 @@ body {
   .navigation {
     width: 100%;
     display: table;
+    margin: auto;
     .nav-slike {
       vertical-align: middle;
       display: table-cell;
       padding: 5px;
+      width: 100px;
       img {      
         max-width: 100%; //responzivnost
         height: auto;    //  

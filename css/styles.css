@@ -25,11 +25,13 @@ body {
         height: auto; }
   body .wrapper .navigation {
     width: 100%;
-    display: table; }
+    display: table;
+    margin: auto; }
     body .wrapper .navigation .nav-slike {
       vertical-align: middle;
       display: table-cell;
-      padding: 5px; }
+      padding: 5px;
+      width: 100px; }
       body .wrapper .navigation .nav-slike img {
         max-width: 100%;
         height: auto; }
